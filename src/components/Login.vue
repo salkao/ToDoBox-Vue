@@ -1,0 +1,116 @@
+<template>
+  <div class="main">
+    <div class="loginForm">
+      <form action="">
+        <div>
+          <img src="../assets/LoginImage.png" alt="">
+        </div>
+        <input type="text" name="username" placeholder="Email" class="formItem textInput">
+        <input type="password" name="password" placeholder="Password" class="formItem textInput">
+          <div id="inputBox" class="formItem">
+            <div class="col" id="first">
+              <input type="checkbox" name="rememberMe">
+              <label for="rememberMe" id="rememberMe">Remember me</label>
+            </div>
+            <div class="col" id="second">
+              <a href="" id="forgotPassword">Forgot password?</a>
+            </div>
+          </div>
+          <button class="formItem"
+                  id="loginButton"
+                  @click="goToLists()">Login</button>
+      </form>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'Login',
+  props: {
+
+  },
+  methods: {
+    goToLists() {
+      this.$router.push('/lists');
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+#first {
+  text-align: left;
+}
+#second {
+  text-align: right;
+}
+  body {
+    margin: 0px;
+    padding: 0px;
+  }
+  .loginForm {
+    // font-family: 'Roboto', sans-serif;
+    // font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    // max-width: 440px;
+    padding: 50px;
+    background-color: #ffffff;
+    box-shadow: 0px 2px 15px 0px rgba(0,0,0,0.75);
+    border-radius: 4px;
+    .textInput {
+      width: 95%;
+      border: 1px solid #747474;
+      border-radius: 4px;
+      font-size: 16px;
+      padding: 2px 10px;
+      &:focus{
+        outline: none;
+        border: 2px solid #006BF5;
+      }
+    }
+    #inputBox {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      .col {
+        width: 100%;
+      }
+    }
+  }
+  #loginButton {
+    border: none;
+    border-radius: 4px;
+    background-color: #425BD9;
+    width: 90%;
+    height: 40px;
+    color: #FFFFFF;
+    font-family: Roboto;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19px;
+    text-align: center;
+  }
+  .formItem {
+    height: 40px;
+    margin-top: 30px;
+  }
+  #forgotPassword {
+    text-decoration: none;
+    color: #425BD9;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 17px;
+    text-align: right;
+  }
+  #rememberMe {
+  color: #222222;
+  font-family: Roboto;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 17px;
+  text-align: left;
+  }
+</style>
+
++
