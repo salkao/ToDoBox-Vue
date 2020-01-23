@@ -1,7 +1,8 @@
 <template>
-<div class="main">
-  <div id="lists">
-    <div class="list">
+  <div class="main">
+  <nav-bar/>
+    <div id="lists">
+      <div class="list">
         <div class="listHeader">
           <h4 class="col">To do</h4>
           <div @click="onAddButtonClicked">+</div>
@@ -36,12 +37,14 @@
 <script>
 import ToDoTask from './ToDoTask.vue';
 import doneTask from './DoneTask.vue';
+import navBar from './NavBar.vue';
 
 export default {
   name: 'HelloWorld',
   components: {
     ToDoTask,
     doneTask,
+    navBar,
   },
   data() {
     return {
@@ -81,13 +84,15 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 #lists {
+  padding-top: 20px;
+  margin-top: 80px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   .list {
     background-color: #ffffff;
     height: auto;
-    width: 445px;
+    width: 555px;
     text-align: left;
   }
   .list+.list {
