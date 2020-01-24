@@ -8,7 +8,9 @@
           <div @click="onAddButtonClicked">+</div>
         </div>
         <div v-if="addingNewTask">
-          <input v-model="isDone" type="checkbox">
+          <!-- <input v-model="isDone" type="checkbox"> -->
+              <md-checkbox v-model="isDone"
+                  class="md-primary"></md-checkbox>
           <input ref="taskTitle"
                 type="text"
                 @blur="addNewToDoTask"
@@ -108,5 +110,10 @@ export default {
     flex: 1 0 auto;
     text-align: left;
   }
+}
+.md-primary {
+  margin: 0;
+  position: relative;
+  top: 6px;
 }
 </style>

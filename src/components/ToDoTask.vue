@@ -1,9 +1,11 @@
 <template>
   <div class="main">
-    <input @click="doneTask(), $event.target.checked = false"
+    <!-- <input @click="doneTask(), $event.target.checked = false"
           type="checkbox"
           name="checkbox"
-          :checked="task.status">
+          :checked="task.status"> -->
+    <md-checkbox @change="doneTask()" v-model="task.status"
+                  class="md-primary"></md-checkbox>
     <input v-model="task.title" type="text"
           ref="itemText"
           contenteditable="true"
@@ -48,5 +50,10 @@ export default {
 <style lang="scss" scoped>
 .main {
   background-color: #ffffff;
+}
+.md-primary {
+  margin: 0;
+  position: relative;
+  top: 6px;
 }
 </style>

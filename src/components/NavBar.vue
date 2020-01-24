@@ -56,7 +56,7 @@ export default {
   }
   .userText {
     position: relative;
-    bottom: 15px;
+    bottom: 5px;
     margin-right: 10px;
   }
   #logoBox {
@@ -69,6 +69,7 @@ export default {
     border-radius: 100%;
     width: 40px;
     height: 40px;
+    margin-bottom: 15px;
   }
   .userInfo {
     text-align: right;

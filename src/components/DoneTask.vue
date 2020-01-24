@@ -1,9 +1,11 @@
 <template>
   <div class="main">
-    <input type="checkbox"
+    <!-- <input type="checkbox"
             name="checkbox"
             checked
-            @click="removeDoneTask(), $event.target.checked=true">
+            @click="removeDoneTask(), $event.target.checked=true"> -->
+        <md-checkbox @change="removeDoneTask($event)" v-model="task.status"
+                  class="md-primary"></md-checkbox>
     <label for="checkbox">{{ task.title }} </label>
   </div>
 </template>
@@ -16,7 +18,8 @@ export default {
     index: Number,
   },
   methods: {
-    removeDoneTask() {
+    removeDoneTask(event) {
+      console.log(event);
       this.$store.dispatch('removeDoneTask', this.index);
       this.$store.dispatch('addToDoTask', this.task);
     },
