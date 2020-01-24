@@ -1,6 +1,6 @@
 <template>
   <div class="main">
-  <nav-bar/>
+    <nav-bar/>
     <div id="lists">
       <div class="list">
         <div class="listHeader">
