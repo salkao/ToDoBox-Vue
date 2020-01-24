@@ -70,7 +70,8 @@ export default {
 #todoText {
   border: none;
   outline: none;
-  color: #222222;
+  // color: #222222;
+  color: #2c3e50;
   font-family: Roboto;
   font-size: 14px;
   font-weight: 400;

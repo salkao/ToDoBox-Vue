@@ -5,7 +5,10 @@
       <div class="list">
         <div class="listHeader">
           <h4 class="col">To do</h4>
-          <div @click="onAddButtonClicked">+</div>
+          <div @click="onAddButtonClicked"><i
+          id="addIcon" class="material-icons">
+add_box
+</i></div>
         </div>
         <div v-if="addingNewTask" id="newTask">
           <!-- <input v-model="isDone" type="checkbox"> -->
@@ -91,9 +94,9 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: center;
+  align-items: flex-start;
   .list {
     background-color: #ffffff;
-    height: auto;
     width: 555px;
     text-align: left;
   }
@@ -105,10 +108,14 @@ export default {
   padding: 20px;
   background-color: #ffffff;
   display: flex;
+  flex-direction: row;
+
   .col {
     margin: 0;
     flex: 1 0 auto;
     text-align: left;
+    flex-grow: 1;
+
   }
 }
 .md-primary {
@@ -125,7 +132,7 @@ export default {
   input {
     border: none;
     outline: none;
-    color: #222222;
+    color: #2c3e50;
     font-family: Roboto;
     font-size: 14px;
     font-weight: 400;
@@ -133,6 +140,13 @@ export default {
     text-align: left;
     margin-left: 10px;
     background-color: #F1F1F1;
+  }
+}
+#addIcon {
+  cursor: pointer;
+  color: #A4A4A4;
+  &:hover {
+    color: #2c3e50;
   }
 }
 </style>
