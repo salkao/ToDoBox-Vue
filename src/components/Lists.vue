@@ -7,7 +7,7 @@
           <h4 class="col">To do</h4>
           <div @click="onAddButtonClicked">+</div>
         </div>
-        <div v-if="addingNewTask">
+        <div v-if="addingNewTask" id="newTask">
           <!-- <input v-model="isDone" type="checkbox"> -->
               <md-checkbox v-model="isDone"
                   class="md-primary"></md-checkbox>
@@ -115,5 +115,24 @@ export default {
   margin: 0;
   position: relative;
   top: 6px;
+}
+#newTask {
+  height: 32px;
+  width: 95%;
+  margin: auto;
+  padding-left: 5px;
+  background-color: #F1F1F1;
+  input {
+    border: none;
+    outline: none;
+    color: #222222;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    text-align: left;
+    margin-left: 10px;
+    background-color: #F1F1F1;
+  }
 }
 </style>
