@@ -20,7 +20,8 @@
                       :'material-icons noDisplay'">
         more_vert
       </i>
-      <md-menu-content>
+      <div v-click-outside="onClickOutside">
+        <md-menu-content >
         <md-menu-item class="item">
           <i class="material-icons">image</i>
           <h5 class="menuItemText">Image</h5>
@@ -30,11 +31,15 @@
           <h5 class="menuItemText">Delete</h5>
         </md-menu-item>
       </md-menu-content>
+      </div>
+
     </md-menu>
   </div>
 </template>
 
 <script>
+import ClickOutside from 'vue-click-outside';
+
 export default {
   name: 'ToDoTask',
   props: {
@@ -48,7 +53,7 @@ export default {
     };
   },
   directives: {
-
+    ClickOutside,
   },
   methods: {
     toDoTaskTiteUpdate() {
@@ -65,8 +70,10 @@ export default {
       this.$store.dispatch('doneTask', this.index);
       this.$store.dispatch('deleteToDoTask', this.index);
     },
-    fun() {
-      console.log('brlucina');
+    onClickOutside() {
+      if (this.clicked) {
+        this.clicked = false;
+      }
     },
   },
 };
