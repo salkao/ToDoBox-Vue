@@ -1,10 +1,6 @@
 <template>
   <div class="main">
-    <!-- <input type="checkbox"
-            name="checkbox"
-            checked
-            @click="removeDoneTask(), $event.target.checked=true"> -->
-        <md-checkbox @change="removeDoneTask($event)" v-model="task.status"
+    <md-checkbox @change="removeDoneTask($event)" v-model="task.status"
                   class="md-primary"></md-checkbox>
     <label id="doneText">{{ task.title }} </label>
   </div>

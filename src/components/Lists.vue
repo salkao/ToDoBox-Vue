@@ -5,15 +5,17 @@
       <div class="list">
         <div class="listHeader">
           <h4 class="col">To do</h4>
-          <div @click="onAddButtonClicked"><i
-          id="addIcon" class="material-icons">
-add_box
-</i></div>
+          <div @click="onAddButtonClicked">
+            <i class="material-icons icon">
+              add_box
+            </i>
+          </div>
         </div>
+        <hr>
         <div v-if="addingNewTask" id="newTask">
-          <!-- <input v-model="isDone" type="checkbox"> -->
-              <md-checkbox v-model="isDone"
-                  class="md-primary"></md-checkbox>
+          <md-checkbox v-model="isDone"
+                        class="md-primary">
+          </md-checkbox>
           <input ref="taskTitle"
                 type="text"
                 @blur="addNewToDoTask"
@@ -24,16 +26,21 @@ add_box
                     :task="task"
                     :index="index"
         />
-    </div>
-    <div class="list">
-      <div class="listHeader">
-          <h4 class="col">Done</h4>
-          <div @click="onAddButtonClicked">-</div>
       </div>
-      <done-task v-for="(task, index) in doneList"
-                  :key="task.Id" :task="task" :index="index"
-      />
-    </div>
+      <div class="list">
+        <div class="listHeader">
+            <h4 class="col">Done</h4>
+            <div @click="onAddButtonClicked">
+              <i class="material-icons icon">
+                delete_sweep
+              </i>
+            </div>
+        </div>
+        <hr>
+        <done-task v-for="(task, index) in doneList"
+                    :key="task.Id" :task="task" :index="index"
+        />
+      </div>
   </div>
 </div>
 
@@ -105,7 +112,7 @@ export default {
   }
 }
 .listHeader {
-  padding: 20px;
+  padding: 20px 20px 10px 20px;
   background-color: #ffffff;
   display: flex;
   flex-direction: row;
@@ -114,8 +121,6 @@ export default {
     margin: 0;
     flex: 1 0 auto;
     text-align: left;
-    flex-grow: 1;
-
   }
 }
 .md-primary {
@@ -142,11 +147,16 @@ export default {
     background-color: #F1F1F1;
   }
 }
-#addIcon {
+.icon {
   cursor: pointer;
   color: #A4A4A4;
   &:hover {
     color: #2c3e50;
   }
+}
+hr {
+  width: 90%;
+  background-color: #F1F1F1;
+  border: 1px solid #F1F1F1;
 }
 </style>
