@@ -2,8 +2,10 @@ export default {
   addToDoTask({ commit }, task) {
     commit('ADD_TODO_TASK', task);
   },
-  updateToDoTask({ commit }, task, index) {
-    commit('UPDATE_TODO_TASK', task, index);
+  updateToDoTask({ commit }, updatedTask) {
+    console.log(updatedTask, 'action');
+    console.log(updatedTask.task.title, updatedTask.index, 'action');
+    commit('UPDATE_TODO_TASK', updatedTask);
   },
   deleteToDoTask({ commit }, index) {
     commit('DELETE_TODO_TASK', index);
@@ -19,5 +21,8 @@ export default {
   },
   updateDoneList({ commit }, value) {
     commit('UPDATE_DONE_LIST', value);
+  },
+  deleteAllDoneTasks({ commit }) {
+    commit('DELETE_ALL_DONE_TASKS');
   },
 };

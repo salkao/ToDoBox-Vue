@@ -5,10 +5,9 @@
     <div class="col">
     <md-checkbox @change="doneTask()" v-model="task.status"
                   class="md-primary"></md-checkbox>
-    <input v-model="task.title" type="text"
-            id="todoText"
-            contenteditable="true"
-            for="checkbox"
+    <input  v-model="editedTitle" type="text"
+            class="todoText"
+            ref="editingTask"
             @change="toDoTaskTiteUpdate">
     </div>
     <md-menu md-size="medium"
@@ -22,17 +21,16 @@
       </i>
       <div v-click-outside="onClickOutside">
         <md-menu-content >
-        <md-menu-item class="item">
-          <i class="material-icons">image</i>
-          <h5 class="menuItemText">Image</h5>
-        </md-menu-item>
-        <md-menu-item @click="deleteToDoTask(index)" class="item">
-          <i class="material-icons">delete_sweep</i>
-          <h5 class="menuItemText">Delete</h5>
-        </md-menu-item>
-      </md-menu-content>
+          <md-menu-item class="item">
+            <i class="material-icons">image</i>
+            <h5 class="menuItemText">Image</h5>
+          </md-menu-item>
+          <md-menu-item @click="deleteToDoTask(index)" class="item">
+            <i class="material-icons">delete_sweep</i>
+            <h5 class="menuItemText">Delete</h5>
+          </md-menu-item>
+        </md-menu-content>
       </div>
-
     </md-menu>
   </div>
 </template>
@@ -50,6 +48,7 @@ export default {
     return {
       hover: false,
       clicked: false,
+      editedTitle: this.task.title,
     };
   },
   directives: {
@@ -58,9 +57,12 @@ export default {
   methods: {
     toDoTaskTiteUpdate() {
       const updatedTask = {
-        title: this.task.title,
+        title: this.editedTitle,
       };
-      this.$store.dispatch('updateToDoTask', updatedTask, this.index);
+      console.log(updatedTask, this.index, 'todo metoda');
+      this.$store.dispatch('updateToDoTask', { task: updatedTask, index: this.index });
+      console.log(this.$refs.editingTask);
+      this.$refs.editingTask.focus();
     },
     deleteToDoTask() {
       this.$store.dispatch('deleteToDoTask', this.index);
@@ -109,7 +111,7 @@ export default {
   position: relative;
   top: 5px;
 }
-#todoText {
+.todoText {
   border: none;
   outline: none;
   // color: #222222;

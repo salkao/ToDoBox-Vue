@@ -34,7 +34,7 @@
       <div class="list">
         <div class="listHeader">
             <h4 class="col">Done</h4>
-            <div @click="onAddButtonClicked">
+            <div @click="deleteAllDoneTasks">
               <i class="material-icons icon">
                 delete_sweep
               </i>
@@ -43,7 +43,7 @@
         <hr>
         <draggable element='div' class="list-group" v-model="doneList"
           :options="options">
-          <done-task class="list-group-item" v-for="(task, index) in doneList"
+            <done-task class="list-group-item" v-for="(task, index) in doneList"
                     :key="task.title" :task="task" :index="index"
           />
         </draggable>
@@ -89,6 +89,9 @@ export default {
       });
     },
     addNewToDoTask() {
+      // if (this.newTaskTitle === '') {
+      //   return;
+      // }
       const task = {
         title: this.newTaskTitle,
         status: this.isDone,
@@ -96,6 +99,12 @@ export default {
       this.addingNewTask = false;
       this.newTaskTitle = '';
       this.$store.dispatch('addToDoTask', task);
+    },
+    // addToDoTask() {
+
+    // },
+    deleteAllDoneTasks() {
+      this.$store.dispatch('deleteAllDoneTasks');
     },
     // onMove({ relatedContext, draggedContext }) {
     //   const relatedElement = relatedContext.element;
@@ -151,6 +160,9 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+.list-group {
+  min-height: 50px;
+}
 #lists {
   padding-top: 20px;
   margin-top: 80px;
@@ -217,7 +229,15 @@ hr {
   background-color: #F1F1F1;
   border: 1px solid #F1F1F1;
 }
-.ghost {
-  background-color: #A4A4A4;
+.list-item {
+  display: inline-block;
+  margin-right: 10px;
+}
+.list-enter-active, .list-leave-active {
+  transition: all 1s;
+}
+.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateX(30px);
 }
 </style>
