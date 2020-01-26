@@ -67,7 +67,7 @@ export default {
     },
     doneTask() {
       this.task.status = true;
-      this.$store.dispatch('doneTask', this.index);
+      this.$store.dispatch('doneTask', this.task);
       this.$store.dispatch('deleteToDoTask', this.index);
     },
     onClickOutside() {

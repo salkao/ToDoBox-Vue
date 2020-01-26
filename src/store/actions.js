@@ -8,10 +8,16 @@ export default {
   deleteToDoTask({ commit }, index) {
     commit('DELETE_TODO_TASK', index);
   },
-  doneTask({ commit }, index) {
-    commit('ADD_DONE_TASK', index);
+  doneTask({ commit }, task) {
+    commit('ADD_DONE_TASK', task);
   },
   removeDoneTask({ commit }, index) {
     commit('REMOVE_DONE_TASK', index);
+  },
+  updateToDoList({ commit }, value) {
+    commit('UPDATE_TODO_LIST', value);
+  },
+  updateDoneList({ commit }, value) {
+    commit('UPDATE_DONE_LIST', value);
   },
 };

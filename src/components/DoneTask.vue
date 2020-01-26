@@ -14,8 +14,7 @@ export default {
     index: Number,
   },
   methods: {
-    removeDoneTask(event) {
-      console.log(event);
+    removeDoneTask() {
       this.$store.dispatch('removeDoneTask', this.index);
       this.$store.dispatch('addToDoTask', this.task);
     },

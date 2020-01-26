@@ -21,11 +21,15 @@
                 @blur="addNewToDoTask"
                 v-model="newTaskTitle">
         </div>
-        <to-do-task v-for="(task, index) in toDoList"
-                    :key="task.Id"
+        <draggable element='div' class="list-group"
+                    v-model="toDoList"
+                    :options="options">
+          <to-do-task class="list-group-item"  v-for="(task, index) in toDoList"
+                    :key="task.title"
                     :task="task"
                     :index="index"
         />
+        </draggable>
       </div>
       <div class="list">
         <div class="listHeader">
@@ -37,9 +41,12 @@
             </div>
         </div>
         <hr>
-        <done-task v-for="(task, index) in doneList"
-                    :key="task.Id" :task="task" :index="index"
-        />
+        <draggable element='div' class="list-group" v-model="doneList"
+          :options="options">
+          <done-task class="list-group-item" v-for="(task, index) in doneList"
+                    :key="task.title" :task="task" :index="index"
+          />
+        </draggable>
       </div>
   </div>
 </div>
@@ -47,6 +54,7 @@
 </template>
 
 <script>
+import draggable from 'vuedraggable';
 import ToDoTask from './ToDoTask.vue';
 import doneTask from './DoneTask.vue';
 import navBar from './NavBar.vue';
@@ -57,12 +65,20 @@ export default {
     ToDoTask,
     doneTask,
     navBar,
+    draggable,
   },
   data() {
     return {
       newTaskTitle: '',
       isDone: false,
       addingNewTask: false,
+      isDragging: false,
+      delayedDragging: false,
+      options: {
+        animation: 200,
+        group: 'list',
+        clone: () => false,
+      },
     };
   },
   methods: {
@@ -81,13 +97,53 @@ export default {
       this.newTaskTitle = '';
       this.$store.dispatch('addToDoTask', task);
     },
+    // onMove({ relatedContext, draggedContext }) {
+    //   const relatedElement = relatedContext.element;
+    //   const draggedElement = draggedContext.element;
+    //   return (
+    //     (!relatedElement || !relatedElement.fixed) && !draggedElement.fixed
+    //   );
+    // },
+  },
+  watch: {
+    // isDragging(newValue) {
+    //   if (newValue) {
+    //     this.delayedDragging = true;
+    //     return;
+    //   }
+    //   this.$nextTick(() => {
+    //     this.delayedDragging = false;
+    //   });
+    // },
   },
   computed: {
-    toDoList() {
-      return this.$store.getters.getToDoList;
+    // toDoList() {
+    //   return this.$store.getters.getToDoList;
+    // },
+    // doneList() {
+    //   return this.$store.getters.getDoneList;
+    // },
+    toDoList: {
+      get() {
+        return this.$store.getters.getToDoList;
+      },
+      set(value) {
+        value.forEach((element) => {
+          element.status = false; // eslint-disable-line no-param-reassign
+        });
+        this.$store.dispatch('updateToDoList', value);
+      },
     },
-    doneList() {
-      return this.$store.getters.getDoneList;
+    doneList: {
+      get() {
+        return this.$store.getters.getDoneList;
+      },
+      set(value) {
+        value.forEach((element) => {
+          element.status = true; // eslint-disable-line no-param-reassign
+        });
+        this.$store.dispatch('updateDoneList', value);
+      },
     },
   },
 };
@@ -106,6 +162,8 @@ export default {
     background-color: #ffffff;
     width: 555px;
     text-align: left;
+    padding-bottom: 15px;
+    min-height: 150px;
   }
   .list+.list {
     margin-left: 30px;
@@ -158,5 +216,8 @@ hr {
   width: 90%;
   background-color: #F1F1F1;
   border: 1px solid #F1F1F1;
+}
+.ghost {
+  background-color: #A4A4A4;
 }
 </style>
