@@ -3,8 +3,6 @@ export default {
     state.toDoList.unshift(toDoTask);
   },
   UPDATE_TODO_TASK(state, updatedTask) {
-    console.log(updatedTask, 'mutation');
-    console.log(updatedTask.task.title, updatedTask.index, 'mutation');
     state.toDoList[updatedTask.index] = updatedTask.task.title;
   },
   DELETE_TODO_TASK(state, index) {
@@ -26,5 +24,8 @@ export default {
   DELETE_ALL_DONE_TASKS(state) {
     state.doneList = [];
     state.doneList.length = 0;
+  },
+  ADD_TASK_IMAGE(state, data) {
+    state.toDoList[data.index].image = data.image;
   },
 };

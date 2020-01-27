@@ -3,8 +3,6 @@ export default {
     commit('ADD_TODO_TASK', task);
   },
   updateToDoTask({ commit }, updatedTask) {
-    console.log(updatedTask, 'action');
-    console.log(updatedTask.task.title, updatedTask.index, 'action');
     commit('UPDATE_TODO_TASK', updatedTask);
   },
   deleteToDoTask({ commit }, index) {
@@ -24,5 +22,8 @@ export default {
   },
   deleteAllDoneTasks({ commit }) {
     commit('DELETE_ALL_DONE_TASKS');
+  },
+  addTaskImage({ commit }, data) {
+    commit('ADD_TASK_IMAGE', data);
   },
 };

@@ -175,7 +175,7 @@ export default {
     width: 555px;
     text-align: left;
     padding-bottom: 15px;
-    min-height: 150px;
+    min-height: 150px auto;
   }
   .list+.list {
     margin-left: 30px;

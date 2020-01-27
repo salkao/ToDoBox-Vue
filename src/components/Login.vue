@@ -1,7 +1,6 @@
 <template>
   <div class="main">
     <div class="loginForm">
-      <form action="">
         <div>
           <img src="../assets/LoginImage.png" alt="">
         </div>
@@ -19,7 +18,6 @@
           <button class="formItem"
                   id="loginButton"
                   @click="goToLists()">Login</button>
-      </form>
     </div>
   </div>
 </template>

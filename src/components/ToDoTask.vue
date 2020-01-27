@@ -2,17 +2,24 @@
   <div id="main" @mouseover="hover = true"
                   @mouseleave="hover = false"
                   :class="hover || clicked? 'main mainActive':'main'">
-    <div class="col">
-    <md-checkbox @change="doneTask()" v-model="task.status"
-                  class="md-primary"></md-checkbox>
-    <input  v-model="editedTitle" type="text"
-            class="todoText"
-            ref="editingTask"
-            @change="toDoTaskTiteUpdate">
+    <div>
+      <img v-if="task.image" :src="task.image" alt="">
     </div>
-    <md-menu md-size="medium"
+    <div class="row">
+      <div class="col">
+        <md-checkbox @change="doneTask()" v-model="task.status"
+                    class="md-primary">
+        </md-checkbox>
+        <input  v-model="editedTitle" type="text"
+              class="todoText"
+              ref="editingTask"
+              @change="toDoTaskTiteUpdate">
+      </div>
+      <div class="col" style="text-align:right">
+            <md-menu md-size="medium"
               :md-offset-x="127"
-              :md-offset-y="-36">
+              :md-offset-y="-36"
+              class="">
       <i md-menu-trigger
           @click="clicked = true"
           :class="hover || clicked ? 'material-icons optionsBtnActive'
@@ -21,18 +28,25 @@
       </i>
       <div v-click-outside="onClickOutside">
         <md-menu-content >
-          <md-menu-item class="item">
-            <i class="material-icons">image</i>
+          <md-menu-item class="item" @click="clickOnUploadBtn()">
+            <input type="file" name="image"
+            ref="uploadImgInput" style="display:none" @change="uploadImage($event)">
+            <!-- <label for="image"> -->
+              <i class="material-icons">image</i>
             <h5 class="menuItemText">Image</h5>
+            <!-- </label> -->
           </md-menu-item>
           <md-menu-item @click="deleteToDoTask(index)" class="item">
             <i class="material-icons">delete_sweep</i>
             <h5 class="menuItemText">Delete</h5>
-          </md-menu-item>
-        </md-menu-content>
+            </md-menu-item>
+          </md-menu-content>
+        </div>
+      </md-menu>
       </div>
-    </md-menu>
-  </div>
+    </div>
+
+    </div>
 </template>
 
 <script>
@@ -49,6 +63,7 @@ export default {
       hover: false,
       clicked: false,
       editedTitle: this.task.title,
+      image: null,
     };
   },
   directives: {
@@ -59,9 +74,7 @@ export default {
       const updatedTask = {
         title: this.editedTitle,
       };
-      console.log(updatedTask, this.index, 'todo metoda');
       this.$store.dispatch('updateToDoTask', { task: updatedTask, index: this.index });
-      console.log(this.$refs.editingTask);
       this.$refs.editingTask.focus();
     },
     deleteToDoTask() {
@@ -77,6 +90,21 @@ export default {
         this.clicked = false;
       }
     },
+    clickOnUploadBtn() {
+      // document.getElementById('uploadImgInput').click();
+      this.$refs.uploadImgInput.click();
+    },
+    uploadImage(event) {
+      const reader = new FileReader();
+      const file = event.target.files[0];
+      if (event.target.files && event.target.files[0]) {
+        reader.readAsDataURL(file);
+        reader.onload = () => {
+          this.image = reader.result;
+          this.$store.dispatch('addTaskImage', { image: this.image.toString(), index: this.index });
+        };
+      }
+    },
   },
 };
 </script>
@@ -88,23 +116,34 @@ export default {
     background-color: #F1F1F1;
   }
 }
+.row {
+  display: flex;
+  // padding-left: 5px;
+  .col {
+    flex: 1 0 auto;
+  }
+}
+
 #main {
-  height: 32px;
+  min-height: 32px;
   border-radius: 4px;
   background-color: #ffffff;
   padding: 1px 5px;
   width: 95%;
-  margin: auto;
-  display: flex;
-  .col {
-    flex: 1 0 auto;
-  }
+  margin: 10px auto;
+  // display: flex;
+  // .col {
+  //   flex: 1 0 auto;
+  // }
   // &:hover {
   //   background-color: #F1F1F1;
   //   input {
   //     background-color: #F1F1F1;
   //   }
   // }
+  .optBtn {
+    float: right;
+  }
 }
 .md-primary {
   margin: 0;
@@ -122,6 +161,12 @@ export default {
   line-height: 17px;
   text-align: left;
   margin-left: 10px;
+  width: 90%;
+}
+img {
+  height: 160px;
+  width: 100%;
+  border-radius: 8px 8px 0 0;
 }
 .menuItemText {
   position: relative;
