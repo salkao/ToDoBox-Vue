@@ -47,10 +47,16 @@ export default {
     margin: 0px;
     padding: 0px;
   }
+  .main {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
   .loginForm {
     // font-family: 'Roboto', sans-serif;
     // font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    // max-width: 440px;
+    max-width: 440px;
     padding: 50px;
     background-color: #ffffff;
     box-shadow: 0px 2px 15px 0px rgba(0,0,0,0.75);
