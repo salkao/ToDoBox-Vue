@@ -1,12 +1,13 @@
 <template>
   <div class="main">
-      <img v-if="task.image" :src="task.image" alt="">
+    <img v-if="task.image" :src="task.image" alt="">
     <div :class="task.image?'addPadding':''">
-          <md-checkbox @change="removeDoneTask($event)" v-model="task.status"
-                  class="md-primary"></md-checkbox>
-    <label id="doneText">{{ task.title }} </label>
+      <md-checkbox @change="removeDoneTask($event)"
+                    v-model="task.status"
+                    class="md-primary">
+      </md-checkbox>
+      <label id="doneText">{{ task.title }} </label>
     </div>
-
   </div>
 </template>
 
@@ -36,16 +37,10 @@ export default {
     border-radius: 4px;
     &:hover {
     background-color: #F1F1F1;
-    // input {
-    //   background-color: #F1F1F1;
-    // }
   }
     label {
       width: 100%;
     }
-  }
-  .space {
-    padding-bottom: 20px;
   }
   img {
   height: 160px;

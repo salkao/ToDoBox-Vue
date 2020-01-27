@@ -13,36 +13,38 @@
         <input  v-model="editedTitle" type="text"
               class="todoText"
               ref="editingTask"
-              @change="toDoTaskTiteUpdate">
+              @change="toDoTaskTiteUpdate"
+        >
       </div>
       <div class="col" style="text-align:right">
-            <md-menu md-size="medium"
+        <md-menu md-size="medium"
               :md-offset-x="127"
               :md-offset-y="-36"
               class="">
-      <i md-menu-trigger
-          @click="clicked = true"
-          :class="hover || clicked ? 'material-icons optionsBtnActive'
-                      :'material-icons noDisplay'">
-        more_vert
-      </i>
-      <div v-click-outside="onClickOutside">
-        <md-menu-content >
-          <md-menu-item class="item" @click="clickOnUploadBtn()">
-            <input type="file" name="image"
-            ref="uploadImgInput" style="display:none" @change="uploadImage($event)">
-            <!-- <label for="image"> -->
-              <i class="material-icons">image</i>
-            <h5 class="menuItemText">Image</h5>
-            <!-- </label> -->
-          </md-menu-item>
-          <md-menu-item @click="deleteToDoTask(index)" class="item">
-            <i class="material-icons">delete_sweep</i>
-            <h5 class="menuItemText">Delete</h5>
-            </md-menu-item>
-          </md-menu-content>
-        </div>
-      </md-menu>
+          <i md-menu-trigger
+              @click="clicked = true"
+              :class="hover || clicked ? 'material-icons optionsBtnActive'
+                          :'material-icons noDisplay'">
+            more_vert
+          </i>
+          <div v-click-outside="onClickOutside">
+            <md-menu-content >
+              <md-menu-item class="item" @click="clickOnUploadBtn()">
+                <input type="file" name="image"
+                        ref="uploadImgInput"
+                        style="display:none"
+                        @change="uploadImage($event)"
+                >
+                <i class="material-icons">image</i>
+                <h5 class="menuItemText">Image</h5>
+              </md-menu-item>
+              <md-menu-item @click="deleteToDoTask(index)" class="item">
+                <i class="material-icons">delete_sweep</i>
+                <h5 class="menuItemText">Delete</h5>
+              </md-menu-item>
+            </md-menu-content>
+          </div>
+        </md-menu>
       </div>
     </div>
 
@@ -73,6 +75,7 @@ export default {
     toDoTaskTiteUpdate() {
       const updatedTask = {
         title: this.editedTitle,
+        status: this.task.status,
       };
       this.$store.dispatch('updateToDoTask', { task: updatedTask, index: this.index });
       this.$refs.editingTask.focus();
@@ -91,7 +94,6 @@ export default {
       }
     },
     clickOnUploadBtn() {
-      // document.getElementById('uploadImgInput').click();
       this.$refs.uploadImgInput.click();
     },
     uploadImage(event) {
@@ -118,12 +120,10 @@ export default {
 }
 .row {
   display: flex;
-  // padding-left: 5px;
   .col {
     flex: 1 0 auto;
   }
 }
-
 #main {
   min-height: 32px;
   border-radius: 4px;
@@ -131,19 +131,6 @@ export default {
   padding: 1px 5px;
   width: 95%;
   margin: 10px auto;
-  // display: flex;
-  // .col {
-  //   flex: 1 0 auto;
-  // }
-  // &:hover {
-  //   background-color: #F1F1F1;
-  //   input {
-  //     background-color: #F1F1F1;
-  //   }
-  // }
-  .optBtn {
-    float: right;
-  }
 }
 .md-primary {
   margin: 0;
@@ -153,7 +140,6 @@ export default {
 .todoText {
   border: none;
   outline: none;
-  // color: #222222;
   color: #2c3e50;
   font-family: Roboto;
   font-size: 14px;
@@ -178,12 +164,6 @@ img {
   &:hover {
     background-color: #F1F1F1;
   }
-}
-.taskActive {
-  background-color: yellow;
-}
-.taskDefColor {
-  background-color: #ffffff;
 }
 .optionsBtnActive {
   display: inline;

@@ -3,7 +3,8 @@ export default {
     state.toDoList.unshift(toDoTask);
   },
   UPDATE_TODO_TASK(state, updatedTask) {
-    state.toDoList[updatedTask.index] = updatedTask.task.title;
+    state.toDoList[updatedTask.index].title = updatedTask.task.title;
+    state.toDoList[updatedTask.index].status = updatedTask.task.status;
   },
   DELETE_TODO_TASK(state, index) {
     state.toDoList.splice(index, 1);

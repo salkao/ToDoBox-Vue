@@ -30,13 +30,11 @@ export default {
     width: 100%;
     height: 80px;
     background-color: #232C33;
-    // display: flex;
     display: flex;
     flex-direction: row;
     justify-content: center;
     .col {
       padding-top: 15px;
-      // padding-left: 14%;
       width: 555px;
     }
   }
@@ -61,8 +59,6 @@ export default {
   }
   #logoBox {
     text-align: left;
-    // position: absolute;
-    // left: 200px;
   }
   .userImage {
     background-size: 100%;
