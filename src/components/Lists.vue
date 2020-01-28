@@ -25,7 +25,7 @@
                     v-model="toDoList"
                     :options="options">
           <to-do-task class="list-group-item"  v-for="(task, index) in toDoList"
-                    :key="task.title"
+                    :key="task.id"
                     :task="task"
                     :index="index"
         />
@@ -44,7 +44,7 @@
         <draggable element='div' class="list-group" v-model="doneList"
           :options="options">
             <done-task class="list-group-item" v-for="(task, index) in doneList"
-                    :key="task.title" :task="task" :index="index"
+                    :key="task.id" :task="task" :index="index"
           />
         </draggable>
       </div>
@@ -98,32 +98,12 @@ export default {
       };
       this.addingNewTask = false;
       this.newTaskTitle = '';
+      console.log(task, 'from component');
       this.$store.dispatch('addToDoTask', task);
     },
-    // addToDoTask() {
-
-    // },
     deleteAllDoneTasks() {
       this.$store.dispatch('deleteAllDoneTasks');
     },
-    // onMove({ relatedContext, draggedContext }) {
-    //   const relatedElement = relatedContext.element;
-    //   const draggedElement = draggedContext.element;
-    //   return (
-    //     (!relatedElement || !relatedElement.fixed) && !draggedElement.fixed
-    //   );
-    // },
-  },
-  watch: {
-    // isDragging(newValue) {
-    //   if (newValue) {
-    //     this.delayedDragging = true;
-    //     return;
-    //   }
-    //   this.$nextTick(() => {
-    //     this.delayedDragging = false;
-    //   });
-    // },
   },
   computed: {
     // toDoList() {

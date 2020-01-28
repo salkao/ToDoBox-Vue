@@ -10,13 +10,14 @@
         <md-checkbox @change="doneTask()" v-model="task.status"
                     class="md-primary">
         </md-checkbox>
-        <input  v-model="editedTitle" type="text"
+        <input  v-model="task.title" type="text"
               class="todoText"
               ref="editingTask"
-              @change="toDoTaskTiteUpdate"
+              @blur="update"
         >
       </div>
       <div class="col" style="text-align:right">
+        <button v-if="editing" @click="update">Save</button>
         <md-menu md-size="medium"
               :md-offset-x="127"
               :md-offset-y="-36"
@@ -47,8 +48,7 @@
         </md-menu>
       </div>
     </div>
-
-    </div>
+  </div>
 </template>
 
 <script>
@@ -66,13 +66,25 @@ export default {
       clicked: false,
       editedTitle: this.task.title,
       image: null,
+      editing: false,
     };
   },
   directives: {
     ClickOutside,
   },
   methods: {
+    update() {
+      console.log('update');
+      console.log(this.$refs.editingTask.value);
+      const updatedTask = {
+        title: this.$refs.editingTask.value,
+        status: this.task.status,
+      };
+      this.$store.dispatch('updateToDoTask', { task: updatedTask, index: this.index });
+      this.editing = false;
+    },
     toDoTaskTiteUpdate() {
+      console.log(this.$refs.editingTask);
       const updatedTask = {
         title: this.editedTitle,
         status: this.task.status,
@@ -124,6 +136,9 @@ export default {
     flex: 1 0 auto;
   }
 }
+.material-icons {
+  cursor: pointer;
+}
 #main {
   min-height: 32px;
   border-radius: 4px;
@@ -147,7 +162,7 @@ export default {
   line-height: 17px;
   text-align: left;
   margin-left: 10px;
-  width: 90%;
+  width: 80%;
 }
 img {
   height: 160px;
