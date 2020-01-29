@@ -1,4 +1,4 @@
-# todobox-vue
+# Todobox
 
 ## Project setup
 ```
