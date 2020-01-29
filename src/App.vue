@@ -12,36 +12,26 @@ export default {
   methods: {
   },
   beforeCreate() {
-    /*eslint-disable */
     indexedDb.getToDoList().then((res) => {
-      const toDoList = res.map(item => {
-        return {
-          id: item.id,
-          title: item.title,
-          status: false,
-          image: item.image,
-        };
-      }).reverse();
+      const toDoList = res.map(item => ({
+        id: item.id,
+        title: item.title,
+        status: false,
+        image: item.image,
+        timestamp: item.timestamp,
+      })).sort((x, y) => y.timestamp - x.timestamp);
       this.$store.dispatch('updateToDoList', toDoList);
     });
     indexedDb.getDoneList().then((res) => {
-      res.forEach((task) => {
-        task.status = true;
-    });
-    const doneList = res.map(item => {
-      return {
+      const doneList = res.map(item => ({
         id: item.id,
         title: item.title,
-        status: true
-      };
+        status: true,
+        image: item.image,
+        timestamp: item.timestamp,
+      }));
+      this.$store.dispatch('updateDoneList', doneList);
     });
-    this.$store.dispatch('updateDoneList', res);
-    });
-  /*eslint-disable */
-  },
-  beforeDestroy() {
-    console.log('poziva se');
-    indexedDb.saveData([this.$store.getters.toDoList, ...this.$store.getters.doneList]);
   },
 };
 </script>

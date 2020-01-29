@@ -74,8 +74,6 @@ export default {
   },
   methods: {
     update() {
-      console.log('update');
-      console.log(this.$refs.editingTask.value);
       const updatedTask = {
         title: this.$refs.editingTask.value,
         status: this.task.status,
@@ -85,7 +83,6 @@ export default {
       this.editing = false;
     },
     toDoTaskTiteUpdate() {
-      console.log(this.$refs.editingTask);
       const updatedTask = {
         title: this.editedTitle,
         status: this.task.status,

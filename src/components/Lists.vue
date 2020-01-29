@@ -89,16 +89,16 @@ export default {
       });
     },
     addNewToDoTask() {
-      // if (this.newTaskTitle === '') {
-      //   return;
-      // }
+      if (this.newTaskTitle === '') {
+        this.addingNewTask = false;
+        return;
+      }
       const task = {
         title: this.newTaskTitle,
         status: this.isDone,
       };
       this.addingNewTask = false;
       this.newTaskTitle = '';
-      console.log(task, 'from component');
       this.$store.dispatch('addToDoTask', task);
     },
     deleteAllDoneTasks() {

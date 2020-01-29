@@ -9,6 +9,7 @@ export default {
   ADD_TODO_TASK(state, toDoTask) {
     const task = toDoTask;
     task.id = ID();
+    task.timestamp = Date.now();
     state.toDoList.unshift(task);
     task.status = task.status ? 1 : 0;
     indexedDb.saveTask(task);

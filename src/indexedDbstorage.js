@@ -2,7 +2,7 @@ import Dexie from 'dexie';
 
 const db = new Dexie('MyDatabase');
 db.version(1).stores({
-  tasks: 'id, status, title, image',
+  tasks: 'id, status, title, image, timestamp',
 });
 
 export default {
@@ -23,7 +23,6 @@ export default {
     });
   },
   doneTask(id) {
-    console.log(id, 'id indexed');
     db.tasks.update(id, { status: 1 });
   },
   toDoTask(id) {
