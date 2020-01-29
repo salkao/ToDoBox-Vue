@@ -15,16 +15,16 @@ export default {
   },
   UPDATE_TODO_TASK(state, updatedTask) {
     const { id, title, status } = updatedTask.task;
-    console.log(title, status, 'destruct');
     state.toDoList[updatedTask.index].title = title;
     state.toDoList[updatedTask.index].status = status;
-    console.log(id, title);
     indexedDb.updateTask(id, title);
-    // state.toDoList[updatedTask.index].title = updatedTask.task.title;
-    // state.toDoList[updatedTask.index].status = updatedTask.task.status;
   },
   DELETE_TODO_TASK(state, index) {
+    const task = state.toDoList[index];
     state.toDoList.splice(index, 1);
+    if (!task.status) {
+      indexedDb.deleteTask(task.id);
+    }
   },
   ADD_DONE_TASK(state, task) {
     state.doneList.push(task);
@@ -37,14 +37,12 @@ export default {
     state.doneList.splice(index, 1);
   },
   UPDATE_TODO_LIST(state, value) {
-    console.log(value, 'todo');
     value.forEach((task) => {
       indexedDb.toDoTask(task.id);
     });
     state.toDoList = value;
   },
   UPDATE_DONE_LIST(state, value) {
-    console.log(value, 'done');
     value.forEach((task) => {
       indexedDb.doneTask(task.id);
     });
@@ -53,6 +51,7 @@ export default {
   DELETE_ALL_DONE_TASKS(state) {
     state.doneList = [];
     state.doneList.length = 0;
+    indexedDb.deleteAllDoneTasks();
   },
   ADD_TASK_IMAGE(state, data) {
     state.toDoList[data.index].image = data.image;
