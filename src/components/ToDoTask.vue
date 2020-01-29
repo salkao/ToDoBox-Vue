@@ -79,6 +79,7 @@ export default {
       const updatedTask = {
         title: this.$refs.editingTask.value,
         status: this.task.status,
+        id: this.task.id,
       };
       this.$store.dispatch('updateToDoTask', { task: updatedTask, index: this.index });
       this.editing = false;

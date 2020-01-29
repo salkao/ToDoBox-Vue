@@ -4,6 +4,48 @@
   </div>
 </template>
 
+<script>
+import indexedDb from './indexedDbstorage';
+
+export default {
+  name: 'app',
+  methods: {
+  },
+  beforeCreate() {
+    /*eslint-disable */
+    indexedDb.getToDoList().then((res) => {
+      const toDoList = res.map(item => {
+        return {
+          id: item.id,
+          title: item.title,
+          status: false,
+          image: item.image,
+        };
+      }).reverse();
+      this.$store.dispatch('updateToDoList', toDoList);
+    });
+    indexedDb.getDoneList().then((res) => {
+      res.forEach((task) => {
+        task.status = true;
+    });
+    const doneList = res.map(item => {
+      return {
+        id: item.id,
+        title: item.title,
+        status: true
+      };
+    });
+    this.$store.dispatch('updateDoneList', res);
+    });
+  /*eslint-disable */
+  },
+  beforeDestroy() {
+    console.log('poziva se');
+    indexedDb.saveData([this.$store.getters.toDoList, ...this.$store.getters.doneList]);
+  },
+};
+</script>
+
 <style lang="scss">
 body {
   position: absolute;

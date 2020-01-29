@@ -21,7 +21,7 @@ export default {
   methods: {
     removeDoneTask() {
       this.$store.dispatch('removeDoneTask', this.index);
-      this.$store.dispatch('addToDoTask', this.task);
+      // this.$store.dispatch('addToDoTask', this.task);
     },
   },
 };
