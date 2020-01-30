@@ -44,6 +44,7 @@ body {
   height: 100%;
 }
 #app {
+  overflow-y: scroll;
   height: 100%;
   font-family: 'Roboto', sans-serif;
   -webkit-font-smoothing: antialiased;

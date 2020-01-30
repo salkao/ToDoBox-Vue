@@ -1,6 +1,15 @@
 <template>
   <div class="main">
     <nav-bar/>
+    <div class="background">
+      <div class="mainTitle column1">
+        <h1>Manage your to do list</h1>
+        <h6>Click on checkbox or drag and drop to done</h6>
+      </div>
+      <div class="image column2">
+        <img src="../assets/backgroundImage.svg" alt="">
+      </div>
+    </div>
     <div id="lists">
       <div class="list">
         <div class="listHeader">
@@ -140,84 +149,145 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.list-group {
-  min-height: 50px;
-}
-#lists {
-  padding-top: 20px;
-  margin-top: 80px;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: flex-start;
-  .list {
+  .list-group {
+    min-height: 50px;
+  }
+  #lists {
+    clear: both;
+    padding-bottom: 60px;
+    padding-top: 20px;
+    margin-top: -14%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    .list {
+      background-color: #ffffff;
+      max-width: 555px;
+      flex: 50;
+      text-align: left;
+      padding-bottom: 15px;
+      min-height: 150px auto;
+    }
+    .list+.list {
+      margin-left: 30px;
+    }
+  }
+  .listHeader {
+    padding: 20px 20px 10px 20px;
     background-color: #ffffff;
-    width: 555px;
-    text-align: left;
-    padding-bottom: 15px;
-    min-height: 150px auto;
-  }
-  .list+.list {
-    margin-left: 30px;
-  }
-}
-.listHeader {
-  padding: 20px 20px 10px 20px;
-  background-color: #ffffff;
-  display: flex;
-  flex-direction: row;
+    display: flex;
+    flex-direction: row;
 
-  .col {
+    .col {
+      margin: 0;
+      flex: 1 0 auto;
+      text-align: left;
+    }
+  }
+  .md-primary {
     margin: 0;
-    flex: 1 0 auto;
-    text-align: left;
+    position: relative;
+    top: 6px;
   }
-}
-.md-primary {
-  margin: 0;
-  position: relative;
-  top: 6px;
-}
-#newTask {
-  height: 32px;
-  width: 95%;
-  margin: auto;
-  padding-left: 5px;
-  background-color: #F1F1F1;
-  input {
-    border: none;
-    outline: none;
-    color: #2c3e50;
-    font-family: Roboto;
-    font-size: 14px;
-    font-weight: 400;
-    line-height: 17px;
-    text-align: left;
-    margin-left: 10px;
+  #newTask {
+    height: 32px;
+    width: 95%;
+    margin: auto;
+    padding-left: 5px;
     background-color: #F1F1F1;
+    input {
+      border: none;
+      outline: none;
+      color: #2c3e50;
+      font-family: Roboto;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: 17px;
+      text-align: left;
+      margin-left: 10px;
+      background-color: #F1F1F1;
+    }
   }
-}
-.icon {
-  cursor: pointer;
-  color: #A4A4A4;
-  &:hover {
-    color: #2c3e50;
+  .icon {
+    cursor: pointer;
+    color: #A4A4A4;
+    &:hover {
+      color: #2c3e50;
+    }
   }
-}
-hr {
-  width: 90%;
-  background-color: #F1F1F1;
-  border: 1px solid #F1F1F1;
-}
-.list-item {
-  display: inline-block;
-  margin-right: 10px;
-}
-.list-enter-active, .list-leave-active {
-  transition: all 1s;
-}
-.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
-  opacity: 0;
-  transform: translateX(30px);
+  hr {
+    width: 90%;
+    background-color: #F1F1F1;
+    border: 1px solid #F1F1F1;
+  }
+  .list-item {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  .list-enter-active, .list-leave-active {
+    transition: all 1s;
+  }
+  .list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  .background {
+    display: flex;
+    justify-content: center;
+    height: 50%;
+  }
+  .column {
+    width: 555px;
+  }
+  .mainTitle {
+    text-align: left;
+    padding: 10% 0;
+    font-size: 20px;
+  }
+  .image {
+    text-align: right;
+  }
+  .column1 {
+    text-align: left;
+  }
+  @media only screen and (max-width: 768px) {
+    /* For mobile phones: */
+    #lists {
+    padding-top: 100px;
+    margin-top: -50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .list+.list {
+      margin-left: 0;
+      margin-top: 30px;
+    }
+  }
+  .list {
+    width: 90%;
+  }
+  .background {
+    margin: 100px auto;
+  }
+  .mainTitle {
+    padding: 0;
+    font-size: 12px;
+    // white-space: nowrap;
+  }
+  .todoText {
+    // width: 75%;
+  }
+  .image {
+    height: 100%;
+  }
+  @media only screen and (max-width: 500px) {
+    #lists {
+      margin-top: -200px;
+    }
+    .image {
+      height: 170px;
+    }
+  }
 }
 </style>
