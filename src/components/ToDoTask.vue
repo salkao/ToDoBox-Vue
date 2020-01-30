@@ -17,7 +17,6 @@
         >
       </div>
       <div class="col" style="text-align:right">
-        <button v-if="editing" @click="update">Save</button>
         <md-menu md-size="medium"
               :md-offset-x="127"
               :md-offset-y="-36"

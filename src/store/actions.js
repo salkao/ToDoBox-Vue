@@ -26,4 +26,10 @@ export default {
   addTaskImage({ commit }, data) {
     commit('ADD_TASK_IMAGE', data);
   },
+  login({ commit }, user) {
+    commit('LOGIN', user);
+  },
+  logout({ commit }) {
+    commit('LOGOUT');
+  },
 };

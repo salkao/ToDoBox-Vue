@@ -4,11 +4,22 @@
         <div>
           <img src="../assets/LoginImage.png" alt="">
         </div>
-        <input type="text" name="username" placeholder="Email" class="formItem textInput">
-        <input type="password" name="password" placeholder="Password" class="formItem textInput">
+        <input v-model="email" type="text" placeholder="Email" class="formItem textInput">
+        <div class="passInput">
+          <input v-model="password"
+                  :type="showPassword ? 'text' : 'password'"
+                  placeholder="Password"
+                  class="formItem textInput"
+                  id="passInput">
+          <i @click="showPassword = !showPassword"
+              :class="showPassword ? 'material-icons icon iconActive' : 'material-icons icon'"
+              class="material-icons icon">
+            remove_red_eye
+          </i>
+        </div>
           <div id="inputBox" class="formItem">
             <div class="col" id="first">
-              <input type="checkbox" name="rememberMe">
+              <input v-model="rememberMe" type="checkbox" name="rememberMe">
               <label for="rememberMe" id="rememberMe">Remember me</label>
             </div>
             <div class="col" id="second">
@@ -17,20 +28,34 @@
           </div>
           <button class="formItem"
                   id="loginButton"
-                  @click="goToLists()">Login</button>
+                  @click="Login()">Login</button>
     </div>
   </div>
 </template>
 
 <script>
+import authentication from '../authentication';
+
 export default {
   name: 'Login',
   props: {
 
   },
+  data() {
+    return {
+      email: '',
+      password: '',
+      rememberMe: false,
+      showPassword: false,
+    };
+  },
   methods: {
-    goToLists() {
-      this.$router.push('/lists');
+    Login() {
+      const user = authentication.login(this.email, this.password, this.rememberMe);
+      if (user !== null) {
+        this.$store.dispatch('login', user);
+        this.$router.push('/lists');
+      }
     },
   },
 };
@@ -56,7 +81,7 @@ export default {
   .loginForm {
     // font-family: 'Roboto', sans-serif;
     // font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    max-width: 440px;
+    width: 440px;
     padding: 50px;
     background-color: #ffffff;
     box-shadow: 0px 2px 15px 0px rgba(0,0,0,0.75);
@@ -114,6 +139,19 @@ export default {
   font-weight: 400;
   line-height: 17px;
   text-align: left;
+  }
+  .passInput {
+    position: relative;
+  }
+  .icon {
+    position: absolute;
+    top: 40px;
+    right: 15px;
+    cursor: pointer;
+    opacity: 0.300000011920929;
+  }
+  .iconActive {
+    opacity: 1;
   }
 </style>
 

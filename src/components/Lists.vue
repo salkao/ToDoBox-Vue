@@ -114,6 +114,11 @@ export default {
       this.$store.dispatch('deleteAllDoneTasks');
     },
   },
+  beforeMount() {
+    if (this.$store.getters.getLoggedUser === null) {
+      this.$router.push({ name: 'login' });
+    }
+  },
   computed: {
     // toDoList() {
     //   return this.$store.getters.getToDoList;
@@ -274,9 +279,6 @@ export default {
     padding: 0;
     font-size: 12px;
     // white-space: nowrap;
-  }
-  .todoText {
-    // width: 75%;
   }
   .image {
     height: 100%;

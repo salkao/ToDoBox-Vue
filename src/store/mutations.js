@@ -58,4 +58,10 @@ export default {
     state.toDoList[data.index].image = data.image;
     indexedDb.addImage(state.toDoList[data.index].id, data.image);
   },
+  LOGIN(state, user) {
+    state.loggedUser = user;
+  },
+  LOGOUT(state) {
+    state.loggedUser = null;
+  },
 };

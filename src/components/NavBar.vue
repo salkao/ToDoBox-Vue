@@ -10,7 +10,17 @@
       <div class="col">
         <div class="userInfo">
           <h4 class="navText userText">Username</h4>
-          <img class="userImage" src="../assets/userImage.png" alt="Logo">
+          <md-menu md-size="medium"
+              :md-offset-x="-120"
+              :md-offset-y="6">
+              <img md-menu-trigger class="userImage" src="../assets/userImage.png" alt="Logo">
+              <md-menu-content class="menuContent">
+                <md-menu-item @click="logout" class="item">
+                  <i class="material-icons">input</i>
+                  <h5 class="menuItemText">Log out</h5>
+                </md-menu-item>
+              </md-menu-content>
+          </md-menu>
         </div>
       </div>
     </div>
@@ -20,6 +30,12 @@
 <script>
 export default {
   name: 'NavBar',
+  methods: {
+    logout() {
+      this.$store.dispatch('logout');
+      this.$router.push('/');
+    },
+  },
 };
 </script>
 
@@ -46,6 +62,26 @@ export default {
     font-weight: 700;
     line-height: 19px;
   }
+  .md-menu-content-container {
+    overflow: hidden !important;
+  }
+  .menuContent {
+    height: 65px;
+    overflow: hidden;
+  }
+  .menuItemText {
+    position: relative;
+    right: 60px;
+  }
+  .item {
+    max-height: 48px !important;
+    overflow: hidden;
+    &:hover {
+      background-color: #F1F1F1;
+    }
+    cursor: pointer;
+
+  }
   .logoText {
     margin-left: 10px;
     margin-top: 15px;
@@ -66,6 +102,8 @@ export default {
     width: 40px;
     height: 40px;
     margin-bottom: 15px;
+
+    cursor: pointer;
   }
   .userInfo {
     text-align: right;

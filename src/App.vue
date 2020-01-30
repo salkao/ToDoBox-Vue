@@ -33,6 +33,11 @@ export default {
       this.$store.dispatch('updateDoneList', doneList);
     });
   },
+  beforeMount() {
+    if (this.$store.getters.getLoggedUser === null) {
+      this.$router.push({ name: 'login' });
+    }
+  },
 };
 </script>
 
