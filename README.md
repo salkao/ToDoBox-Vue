@@ -50,10 +50,10 @@ npm run serve
 npm run build
 ```
 ## Dependencies
-*[vue-router](https://router.vuejs.org/)
-*[vuex](https://vuex.vuejs.org/)
-*[dexie](https://dexie.org/);
-*[vue-click-outside](https://www.npmjs.com/package/vue-click-outside)
-*[vue-material](https://vuematerial.io/)
-*[vuedraggable](https://github.com/SortableJS/Vue.Draggable)
+* [vue-router](https://router.vuejs.org/)
+* [vuex](https://vuex.vuejs.org/)
+* [dexie](https://dexie.org/);
+* [vue-click-outside](https://www.npmjs.com/package/vue-click-outside)
+* [vue-material](https://vuematerial.io/)
+* [vuedraggable](https://github.com/SortableJS/Vue.Draggable)
 
