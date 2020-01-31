@@ -240,11 +240,9 @@ export default {
   }
   .background {
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
+    // height: 550px;
     height: 50%;
-  }
-  .column {
-    width: 555px;
   }
   .mainTitle {
     text-align: left;
@@ -254,8 +252,14 @@ export default {
   .image {
     text-align: right;
   }
+
   .column1 {
     text-align: left;
+    padding-left: 90px;
+  }
+  .column2 {
+    text-align: left;
+    padding-right: 90px;
   }
   @media only screen and (max-width: 768px) {
     /* For mobile phones: */
