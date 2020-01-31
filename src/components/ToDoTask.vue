@@ -178,7 +178,8 @@ img {
   }
 }
 .optionsBtnActive {
-  display: inline;
+  display: block;
+  margin-top: 4px;
 }
 .noDisplay {
   display: none;

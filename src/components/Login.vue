@@ -19,7 +19,11 @@
         </div>
           <div id="inputBox" class="formItem">
             <div class="col" id="first">
-              <input v-model="rememberMe" type="checkbox" name="rememberMe">
+              <md-checkbox v-model="rememberMe"
+                            class="md-primary"
+                            type="checkbox"
+                            name="rememberMe">
+              </md-checkbox>
               <label for="rememberMe" id="rememberMe">Remember me</label>
             </div>
             <div class="col" id="second">
@@ -64,9 +68,11 @@ export default {
 <style lang="scss" scoped>
 #first {
   text-align: left;
+  padding-left: 10px;
 }
 #second {
   text-align: right;
+  padding-right: 10px;
 }
   body {
     margin: 0px;
@@ -133,12 +139,16 @@ export default {
     text-align: right;
   }
   #rememberMe {
-  color: #222222;
-  font-family: Roboto;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 17px;
-  text-align: left;
+    padding-left: 10px;
+    position: relative;
+    bottom: 5px;
+    color: #222222;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    text-align: left;
+
   }
   .passInput {
     position: relative;
@@ -152,6 +162,9 @@ export default {
   }
   .iconActive {
     opacity: 1;
+  }
+  .md-checkbox {
+    margin: 0;
   }
 </style>
 

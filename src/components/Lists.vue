@@ -173,6 +173,7 @@ export default {
       text-align: left;
       padding-bottom: 15px;
       min-height: 150px auto;
+      border-radius: 8px;
     }
     .list+.list {
       margin-left: 30px;
@@ -183,7 +184,7 @@ export default {
     background-color: #ffffff;
     display: flex;
     flex-direction: row;
-
+    border-radius: 4px;
     .col {
       margin: 0;
       flex: 1 0 auto;
