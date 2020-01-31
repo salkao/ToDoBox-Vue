@@ -63,7 +63,7 @@ export default {
     justify-content: center;
     .col {
       // padding-top: 15px;
-      width: 555px;
+      width: 580px;
     }
   }
   .navText {
