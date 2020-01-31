@@ -173,7 +173,7 @@ export default {
       text-align: left;
       padding-bottom: 15px;
       min-height: 150px auto;
-      border-radius: 8px;
+      border-radius: 4px;
     }
     .list+.list {
       margin-left: 30px;

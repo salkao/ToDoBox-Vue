@@ -10,17 +10,24 @@
       <div class="col">
         <div class="userInfo">
           <h4 class="navText userText">Username</h4>
-          <md-menu md-size="medium"
-              :md-offset-x="-120"
-              :md-offset-y="6">
-              <img md-menu-trigger class="userImage" src="../assets/userImage.png" alt="Logo">
+          <div :class="userImageActive ? 'imageBox imageBoxActive' : 'imageBox'">
+            <md-menu md-size="medium"
+              :md-offset-x="-100"
+              :md-offset-y="12">
+              <img md-menu-trigger
+                    @click="userImageActive = !userImageActive"
+                    class="userImage"
+                    src="../assets/userImage.png"
+                    alt="User image">
               <md-menu-content class="menuContent">
                 <md-menu-item @click="logout" class="item">
                   <i class="material-icons">input</i>
                   <h5 class="menuItemText">Log out</h5>
                 </md-menu-item>
               </md-menu-content>
-          </md-menu>
+            </md-menu>
+          </div>
+
         </div>
       </div>
     </div>
@@ -30,6 +37,11 @@
 <script>
 export default {
   name: 'NavBar',
+  data() {
+    return {
+      userImageActive: false,
+    };
+  },
   methods: {
     logout() {
       this.$store.dispatch('logout');
@@ -50,7 +62,7 @@ export default {
     flex-direction: row;
     justify-content: center;
     .col {
-      padding-top: 15px;
+      // padding-top: 15px;
       width: 555px;
     }
   }
@@ -62,6 +74,21 @@ export default {
     font-weight: 700;
     line-height: 19px;
   }
+  .imageBox {
+    float: right;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 80px;
+  }
+  .imageBoxActive {
+    background-color: #353D43;
+  }
+  .material-icons {
+    position: relative;
+    bottom: 10px;
+  }
   .md-menu-content-container {
     overflow: hidden !important;
   }
@@ -72,6 +99,7 @@ export default {
   .menuItemText {
     position: relative;
     right: 60px;
+    bottom: 10px;
   }
   .item {
     max-height: 48px !important;
@@ -90,13 +118,17 @@ export default {
   }
   .userText {
     position: relative;
-    bottom: 5px;
+    top: 10px;
+    // bottom: 5px;
     margin-right: 10px;
   }
   #logoBox {
     text-align: left;
+    padding-top: 15px;
   }
   .userImage {
+    position: relative;
+    top: 7px;
     background-size: 100%;
     border-radius: 100%;
     width: 40px;
@@ -107,5 +139,9 @@ export default {
   }
   .userInfo {
     text-align: right;
+    height: 100%;
+  }
+  .userInfoActive {
+    background-color: rgba(0, 0, 0, 0.15000000596046448);
   }
 </style>

@@ -180,6 +180,7 @@ img {
 .optionsBtnActive {
   display: block;
   margin-top: 4px;
+  font-size: 22px;
 }
 .noDisplay {
   display: none;
