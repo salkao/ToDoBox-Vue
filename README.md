@@ -7,7 +7,7 @@ Once when task is completed it can be moved to done list, completed task can als
 ## Demo
 https://todobox.netlify.com/
 #### Demo login data
-Email: todobox@test.com
+Email: todobox@test.com  
 Password: todoboxtest
 
 ## Features
@@ -17,8 +17,8 @@ list it can't be edited. Task can be moved back to todo list by clicking on chec
 Tasks can be moved from one list to another by drag and drop functionality too. There is also option for delete all done tasks.
 
 ## Requirements
-..* Node
-..* NPM 
+* Node
+* NPM 
 
 ## Framework
 This project is developed using Vue.js framework.
