@@ -298,5 +298,10 @@ export default {
       padding: 0;
     }
   }
+  @media only screen and (max-width: 500px) {
+    #lists {
+      margin-top: -280px;
+    }
+  }
 }
 </style>
