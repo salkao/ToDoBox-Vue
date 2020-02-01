@@ -1,6 +1,8 @@
 <template>
   <div id="main" @mouseover="hover = true"
                   @mouseleave="hover = false"
+                  tabindex="-1"
+                  @focusout="onClickOutside"
                   :class="hover || clicked? 'main mainActive':'main'">
     <div>
       <img v-if="task.image" :src="task.image" alt="">
@@ -27,7 +29,7 @@
                           :'material-icons noDisplay'">
             more_vert
           </i>
-          <div v-click-outside="onClickOutside">
+          <div>
             <md-menu-content >
               <md-menu-item class="item" @click="clickOnUploadBtn()">
                 <input type="file" name="image"
@@ -51,8 +53,6 @@
 </template>
 
 <script>
-import ClickOutside from 'vue-click-outside';
-
 export default {
   name: 'ToDoTask',
   props: {
@@ -67,9 +67,6 @@ export default {
       image: null,
       editing: false,
     };
-  },
-  directives: {
-    ClickOutside,
   },
   methods: {
     update() {
@@ -98,6 +95,7 @@ export default {
       this.$store.dispatch('deleteToDoTask', this.index);
     },
     onClickOutside() {
+      console.log('aaaaaaaaaaa');
       if (this.clicked) {
         this.clicked = false;
       }

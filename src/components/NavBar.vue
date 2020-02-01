@@ -15,8 +15,10 @@
               :md-offset-x="-100"
               :md-offset-y="12">
               <img md-menu-trigger
+                    tabindex="-1"
+                    @focusout="a"
                     @click="userImageActive = !userImageActive"
-                    class="userImage"
+                    :class="userImageActive ? 'userImage userInfoActive' : 'userImage'"
                     src="../assets/userImage.png"
                     alt="User image">
               <md-menu-content class="menuContent">
@@ -45,6 +47,15 @@ export default {
     logout() {
       this.$store.dispatch('logout');
       this.$router.push('/');
+    },
+    a() {
+      console.log('aaaa');
+      this.userImageActive = false;
+    },
+    b() {
+      console.log('bbbb');
+
+      this.userImageActive = false;
     },
   },
 };
@@ -124,6 +135,7 @@ export default {
     padding-top: 15px;
   }
   .userImage {
+    box-sizing: content-box;
     position: relative;
     top: 7px;
     background-size: 100%;
@@ -138,6 +150,6 @@ export default {
     height: 100%;
   }
   .userInfoActive {
-    background-color: rgba(0, 0, 0, 0.15000000596046448);
+    border: 3px solid #ffffff;
   }
 </style>

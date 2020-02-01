@@ -240,7 +240,6 @@ export default {
   }
   .background {
     display: flex;
-    // justify-content: space-between;
     flex-direction: row;
     justify-content: center;
   }
@@ -252,11 +251,10 @@ export default {
     padding-bottom: 290px;
     font-size: 20px;
     white-space: nowrap;
-
-    h1 {
-    }
   }
   .image {
+    position: relative;
+    left: 50px;
     max-width: 555px;
     flex: 50;
     background-image: url('../assets/backgroundImage.svg');
@@ -265,7 +263,6 @@ export default {
   }
   @media only screen and (max-width: 768px) {
     #lists {
-    // padding-top: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
