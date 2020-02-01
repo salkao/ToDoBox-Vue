@@ -95,7 +95,6 @@ export default {
       this.$store.dispatch('deleteToDoTask', this.index);
     },
     onClickOutside() {
-      console.log('aaaaaaaaaaa');
       if (this.clicked) {
         this.clicked = false;
       }
