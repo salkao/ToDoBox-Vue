@@ -308,5 +308,8 @@ export default {
     .background {
       padding-left: 10px;
     }
+    .backImage {
+      background-position-x: 130px;
+    }
   }
 </style>
