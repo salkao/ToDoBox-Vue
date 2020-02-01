@@ -244,6 +244,7 @@ export default {
     justify-content: center;
   }
   .mainTitle {
+    color: #222222;
     max-width: 555px;
     flex: 50;
     text-align: left;
@@ -285,6 +286,18 @@ export default {
     }
     .image {
       background-position-x: -100px;
+    }
+  }
+  @media only screen and (max-width: 550px) {
+    .mainTitle {
+      background-position-x: 150px;
+      background-repeat: no-repeat;
+      background-size: 400px 500px;
+      width: 100%;
+      background-image: url('../assets/backgroundImage.svg');
+    }
+    .image {
+      display: none;
     }
   }
 </style>

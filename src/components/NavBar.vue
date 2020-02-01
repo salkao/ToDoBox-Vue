@@ -13,10 +13,10 @@
           <div :class="userImageActive ? 'imageBox imageBoxActive' : 'imageBox'">
             <md-menu md-size="medium"
               :md-offset-x="-100"
-              :md-offset-y="12">
+              :md-offset-y="10">
               <img md-menu-trigger
                     tabindex="-1"
-                    @focusout="a"
+                    @focusout="userImageActive = false"
                     @click="userImageActive = !userImageActive"
                     :class="userImageActive ? 'userImage userInfoActive' : 'userImage'"
                     src="../assets/userImage.png"
@@ -47,15 +47,6 @@ export default {
     logout() {
       this.$store.dispatch('logout');
       this.$router.push('/');
-    },
-    a() {
-      console.log('aaaa');
-      this.userImageActive = false;
-    },
-    b() {
-      console.log('bbbb');
-
-      this.userImageActive = false;
     },
   },
 };
