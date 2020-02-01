@@ -27,7 +27,6 @@
               </md-menu-content>
             </md-menu>
           </div>
-
         </div>
       </div>
     </div>
@@ -62,7 +61,6 @@ export default {
     flex-direction: row;
     justify-content: center;
     .col {
-      // padding-top: 15px;
       width: 580px;
     }
   }
@@ -108,7 +106,6 @@ export default {
       background-color: #F1F1F1;
     }
     cursor: pointer;
-
   }
   .logoText {
     margin-left: 10px;
@@ -119,7 +116,6 @@ export default {
   .userText {
     position: relative;
     top: 10px;
-    // bottom: 5px;
     margin-right: 10px;
   }
   #logoBox {
@@ -134,7 +130,6 @@ export default {
     width: 40px;
     height: 40px;
     margin-bottom: 15px;
-
     cursor: pointer;
   }
   .userInfo {

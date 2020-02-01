@@ -12,6 +12,7 @@ export default {
   methods: {
   },
   beforeCreate() {
+    // if there are tasks in dexie indexedDb load them to vuex
     indexedDb.getToDoList().then((res) => {
       const toDoList = res.map(item => ({
         id: item.id,

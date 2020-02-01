@@ -241,13 +241,14 @@ export default {
   .background {
     display: flex;
     justify-content: space-around;
-    // height: 550px;
     height: 50%;
   }
   .mainTitle {
     text-align: left;
     padding: 10% 0;
     font-size: 20px;
+    white-space: nowrap;
+
   }
   .image {
     text-align: right;
@@ -262,7 +263,6 @@ export default {
     padding-right: 90px;
   }
   @media only screen and (max-width: 768px) {
-    /* For mobile phones: */
     #lists {
     padding-top: 100px;
     margin-top: -50%;
@@ -283,7 +283,6 @@ export default {
   .mainTitle {
     padding: 0;
     font-size: 12px;
-    // white-space: nowrap;
   }
   .image {
     height: 100%;
@@ -294,6 +293,9 @@ export default {
     }
     .image {
       height: 170px;
+    }
+    .column2 {
+      padding: 0;
     }
   }
 }
