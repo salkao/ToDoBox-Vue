@@ -7,7 +7,7 @@
         <h6>Click on checkbox or drag and drop to done</h6>
       </div>
       <div class="image column2">
-        <img src="../assets/backgroundImage.svg" alt="">
+        <!-- <img src="../assets/backgroundImage.svg" alt=""> -->
       </div>
     </div>
     <div id="lists">
@@ -158,10 +158,10 @@ export default {
     min-height: 50px;
   }
   #lists {
-    clear: both;
+    position: relative;
+    bottom: 250px;
     padding-bottom: 60px;
     padding-top: 20px;
-    margin-top: -14%;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -240,68 +240,54 @@ export default {
   }
   .background {
     display: flex;
-    justify-content: space-around;
-    height: 50%;
+    // justify-content: space-between;
+    flex-direction: row;
+    justify-content: center;
   }
   .mainTitle {
+    max-width: 555px;
+    flex: 50;
     text-align: left;
-    padding: 10% 0;
+    padding-top: 120px;
+    padding-bottom: 290px;
     font-size: 20px;
     white-space: nowrap;
 
+    h1 {
+    }
   }
   .image {
-    text-align: right;
-  }
-
-  .column1 {
-    text-align: left;
-    padding-left: 90px;
-  }
-  .column2 {
-    text-align: left;
-    padding-right: 90px;
+    max-width: 555px;
+    flex: 50;
+    background-image: url('../assets/backgroundImage.svg');
+    background-size: 500px 100%;
+    background-repeat: no-repeat;
   }
   @media only screen and (max-width: 768px) {
     #lists {
-    padding-top: 100px;
-    margin-top: -50%;
+    // padding-top: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    .list {
+      width: 95%;
+    }
     .list+.list {
       margin-left: 0;
       margin-top: 30px;
     }
   }
-  .list {
-    width: 90%;
-  }
-  .background {
-    margin: 100px auto;
-  }
-  .mainTitle {
-    padding: 0;
-    font-size: 12px;
-  }
-  .image {
-    height: 100%;
-  }
-  @media only screen and (max-width: 500px) {
-    #lists {
-      margin-top: -200px;
+    .mainTitle {
+      h1 {
+        font-size: 25px;
+      }
+      h6 {
+        font-size: 10px;
+      }
     }
     .image {
-      height: 170px;
-    }
-    .column2 {
-      padding: 0;
+      background-position-x: -100px;
     }
   }
-  @media only screen and (max-width: 500px) {
-    #lists {
-      margin-top: -280px;
-    }
-  }
-}
 </style>
