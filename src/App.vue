@@ -9,8 +9,6 @@ import indexedDb from './indexedDbstorage';
 
 export default {
   name: 'app',
-  methods: {
-  },
   beforeCreate() {
     // if there are tasks in dexie indexedDb load them to vuex
     indexedDb.getToDoList().then((res) => {

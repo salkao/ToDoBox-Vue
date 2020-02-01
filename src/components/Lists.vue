@@ -2,13 +2,12 @@
   <div class="main">
     <nav-bar/>
     <div class="background">
-      <div class="mainTitle column1">
+      <div class="mainTitle">
         <h1>Manage your to do list</h1>
         <h6>Click on checkbox or drag and drop to done</h6>
+        <div v-if="width < 768" class="backImage"></div>
       </div>
-      <div class="image column2">
-        <!-- <img src="../assets/backgroundImage.svg" alt=""> -->
-      </div>
+      <div class="image"></div>
     </div>
     <div id="lists">
       <div class="list">
@@ -67,6 +66,7 @@ import draggable from 'vuedraggable';
 import ToDoTask from './ToDoTask.vue';
 import doneTask from './DoneTask.vue';
 import navBar from './NavBar.vue';
+import widthMixin from '../mixins/widthMixin';
 
 export default {
   name: 'HelloWorld',
@@ -76,6 +76,7 @@ export default {
     navBar,
     draggable,
   },
+  mixins: [widthMixin],
   data() {
     return {
       newTaskTitle: '',
@@ -120,12 +121,6 @@ export default {
     }
   },
   computed: {
-    // toDoList() {
-    //   return this.$store.getters.getToDoList;
-    // },
-    // doneList() {
-    //   return this.$store.getters.getDoneList;
-    // },
     toDoList: {
       get() {
         return this.$store.getters.getToDoList;
@@ -252,6 +247,9 @@ export default {
     padding-bottom: 290px;
     font-size: 20px;
     white-space: nowrap;
+    h6 {
+      font-weight: 400;
+    }
   }
   .image {
     position: relative;
@@ -264,19 +262,22 @@ export default {
   }
   @media only screen and (max-width: 768px) {
     #lists {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
-    .list {
-      width: 95%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 100%;
+      bottom: 200px;
+      .list {
+        width: 95%;
+      }
+      .list+.list {
+        margin-left: 0;
+        margin-top: 30px;
+      }
     }
-    .list+.list {
-      margin-left: 0;
-      margin-top: 30px;
-    }
-  }
     .mainTitle {
+      position: relative;
+      width: 100%;
       h1 {
         font-size: 25px;
       }
@@ -284,20 +285,28 @@ export default {
         font-size: 10px;
       }
     }
-    .image {
-      background-position-x: -100px;
-    }
-  }
-  @media only screen and (max-width: 550px) {
-    .mainTitle {
+    .backImage {
       background-position-x: 150px;
       background-repeat: no-repeat;
       background-size: 400px 500px;
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
+      height: 100%;
       background-image: url('../assets/backgroundImage.svg');
+      opacity: 0.2;
     }
     .image {
       display: none;
+    }
+  }
+  @media only screen and (max-width: 625px) {
+    #lists {
+      bottom: 200px;
+    }
+    .background {
+      padding-left: 10px;
     }
   }
 </style>
