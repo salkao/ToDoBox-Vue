@@ -15,7 +15,7 @@
       </div>
     </div>
     <div :class="{ darker: displaySidebar }">
-      <nav-bar @sidebar="fun"/>
+      <nav-bar @sidebar="showSidebar"/>
       <div class="background">
         <div class="mainTitle">
           <h1>Manage your to do list</h1>
@@ -108,7 +108,7 @@ export default {
     };
   },
   methods: {
-    fun() {
+    showSidebar() {
       this.displaySidebar = true;
       this.$nextTick(() => {
         this.$refs.sidebar.focus();

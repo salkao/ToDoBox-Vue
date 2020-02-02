@@ -17,7 +17,7 @@
               <img md-menu-trigger
                     tabindex="-1"
                     @focusout="userImageActive = false"
-                    @click="userImageActive = !userImageActive, cons()"
+                    @click="userImageActive = !userImageActive, showSidebar()"
                     :class="userImageActive ? 'userImage userInfoActive' : 'userImage'"
                     src="../assets/userImage.png"
                     alt="User image">
@@ -51,11 +51,8 @@ export default {
       this.$store.dispatch('logout');
       this.$router.push('/');
     },
-    cons() {
-      if (this.width > 768) {
-        console.log('preko');
-      } else {
-        console.log('ispod');
+    showSidebar() {
+      if (this.width < 768) {
         this.$emit('sidebar', this.width);
       }
     },
