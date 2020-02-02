@@ -227,7 +227,7 @@ export default {
   }
   #lists {
     position: relative;
-    bottom: 250px;
+    bottom: 240px;
     padding-bottom: 60px;
     padding-top: 20px;
     display: flex;
@@ -235,6 +235,7 @@ export default {
     justify-content: center;
     align-items: flex-start;
     .list {
+      border: 0.5px solid #dddddd;
       background-color: #ffffff;
       max-width: 555px;
       flex: 50;
@@ -248,6 +249,7 @@ export default {
     }
   }
   .listHeader {
+    border-top: 0.5px solid #dddddd;
     padding: 20px 20px 10px 20px;
     background-color: #ffffff;
     display: flex;
@@ -321,7 +323,9 @@ export default {
     font-size: 20px;
     white-space: nowrap;
     h6 {
+      margin-top: 5px;
       font-weight: 400;
+      color: #838383;
     }
   }
   .image {
@@ -332,6 +336,7 @@ export default {
     background-image: url('../assets/backgroundImage.svg');
     background-size: 500px 100%;
     background-repeat: no-repeat;
+    background-position-y: -15px;
   }
   @media only screen and (max-width: 768px) {
     #lists {
@@ -359,7 +364,7 @@ export default {
       }
     }
     .backImage {
-      background-position-x: 150px;
+      background-position: 150px -10px;
       background-repeat: no-repeat;
       background-size: 400px 500px;
       position: absolute;

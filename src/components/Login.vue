@@ -102,8 +102,6 @@ span {
     justify-content: center;
   }
   .loginForm {
-    // font-family: 'Roboto', sans-serif;
-    // font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     width: 440px;
     padding: 50px;
     background-color: #ffffff;
@@ -171,9 +169,10 @@ span {
     position: relative;
   }
   .icon {
+    font-size: 27px;
     position: absolute;
-    top: 40px;
-    right: 15px;
+    top: 38px;
+    right: 16px;
     cursor: pointer;
     opacity: 0.300000011920929;
   }
@@ -182,6 +181,14 @@ span {
   }
   .md-checkbox {
     margin: 0;
+  }
+  @media only screen and (max-width: 768px) {
+    .loginForm {
+      margin: auto 0;
+      width: 100%;
+      height: 100%;
+      padding: 100px 20px;
+    }
   }
 </style>
 
