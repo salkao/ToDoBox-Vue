@@ -9,7 +9,7 @@
       </div>
       <div class="col">
         <div class="userInfo">
-          <h4 class="navText userText">Username</h4>
+          <h4 class="navText userText">{{ username }}</h4>
           <div :class="userImageActive ? 'imageBox imageBoxActive' : 'imageBox'">
             <md-menu md-size="medium"
               :md-offset-x="-98"
@@ -55,6 +55,11 @@ export default {
       if (this.width < 768) {
         this.$emit('sidebar', this.width);
       }
+    },
+  },
+  computed: {
+    username() {
+      return this.$store.getters.getLoggedUser.username;
     },
   },
 };

@@ -7,7 +7,7 @@
           @focusout="displaySidebar = false">
       <div class="sidebarUserInfo">
         <img src="../assets/userImage.png" alt="User image">
-        <h4 class="navText userText">Username</h4>
+        <h4 class="navText userText">{{ username }}</h4>
       </div>
       <div @click="logout" class="sidebarLogout">
         <i class="material-icons">input</i>
@@ -147,6 +147,9 @@ export default {
     }
   },
   computed: {
+    username() {
+      return this.$store.getters.getLoggedUser.username;
+    },
     toDoList: {
       get() {
         return this.$store.getters.getToDoList;

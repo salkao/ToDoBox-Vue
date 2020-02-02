@@ -5,6 +5,7 @@ export default {
         email,
         password,
         remeberMe,
+        username: 'Username',
       };
       return user;
     }
