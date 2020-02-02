@@ -41,33 +41,30 @@ export default {
 </script>
 
 <style lang="scss">
-body {
-  position: absolute;
-  margin: 0;
-  width: 100%;
-  height: 100%;
-}
-#app {
-  overflow-y: scroll;
-  height: 100%;
-  font-family: 'Roboto', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  background-color: #F1F1F1;
-}
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
+  body {
+    position: absolute;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+  }
+  #app {
+    overflow-y: scroll;
+    height: 100%;
+    font-family: 'Roboto', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-align: center;
     color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
+    background-color: #F1F1F1;
+  }
+  #nav {
+    padding: 30px;
+    a {
+      font-weight: bold;
+      color: #2c3e50;
+      &.router-link-exact-active {
+        color: #42b983;
+      }
     }
   }
-}
 </style>

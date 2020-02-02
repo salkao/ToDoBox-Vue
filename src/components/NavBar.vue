@@ -12,12 +12,12 @@
           <h4 class="navText userText">Username</h4>
           <div :class="userImageActive ? 'imageBox imageBoxActive' : 'imageBox'">
             <md-menu md-size="medium"
-              :md-offset-x="-100"
+              :md-offset-x="-98"
               :md-offset-y="10">
               <img md-menu-trigger
                     tabindex="-1"
                     @focusout="userImageActive = false"
-                    @click="userImageActive = !userImageActive"
+                    @click="userImageActive = !userImageActive, cons()"
                     :class="userImageActive ? 'userImage userInfoActive' : 'userImage'"
                     src="../assets/userImage.png"
                     alt="User image">
@@ -36,8 +36,11 @@
 </template>
 
 <script>
+import widthMixin from '../mixins/widthMixin';
+
 export default {
   name: 'NavBar',
+  mixins: [widthMixin],
   data() {
     return {
       userImageActive: false,
@@ -47,6 +50,14 @@ export default {
     logout() {
       this.$store.dispatch('logout');
       this.$router.push('/');
+    },
+    cons() {
+      if (this.width > 768) {
+        console.log('preko');
+      } else {
+        console.log('ispod');
+        this.$emit('sidebar', this.width);
+      }
     },
   },
 };

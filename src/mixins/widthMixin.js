@@ -1,7 +1,7 @@
 export default {
   data() {
     return {
-      windowWidth: null,
+      windowWidth: window.screen.width,
     };
   },
   created() {

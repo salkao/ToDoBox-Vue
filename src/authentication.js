@@ -10,7 +10,4 @@ export default {
     }
     return null;
   },
-  logout() {
-    this.$store.dispatch('logout');
-  },
 };

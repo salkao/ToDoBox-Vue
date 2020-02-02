@@ -1,64 +1,79 @@
 <template>
   <div class="main">
-    <nav-bar/>
-    <div class="background">
-      <div class="mainTitle">
-        <h1>Manage your to do list</h1>
-        <h6>Click on checkbox or drag and drop to done</h6>
-        <div v-if="width < 768" class="backImage"></div>
+    <div v-if="displaySidebar"
+          class="sidebar"
+          ref="sidebar"
+          tabindex="-1"
+          @focusout="displaySidebar = false">
+      <div class="sidebarUserInfo">
+        <img src="../assets/userImage.png" alt="User image">
+        <h4 class="navText userText">Username</h4>
       </div>
-      <div class="image"></div>
+      <div @click="logout" class="sidebarLogout">
+        <i class="material-icons">input</i>
+        <h5 class="logoutText">Log out</h5>
+      </div>
     </div>
-    <div id="lists">
-      <div class="list">
-        <div class="listHeader">
-          <h4 class="col">To do</h4>
-          <div @click="onAddButtonClicked">
-            <i class="material-icons icon">
-              add_box
-            </i>
-          </div>
+    <div :class="{ darker: displaySidebar }">
+      <nav-bar @sidebar="fun"/>
+      <div class="background">
+        <div class="mainTitle">
+          <h1>Manage your to do list</h1>
+          <h6>Click on checkbox or drag and drop to done</h6>
+          <div v-if="width < 768" class="backImage"></div>
         </div>
-        <hr>
-        <div v-if="addingNewTask" id="newTask">
-          <md-checkbox v-model="isDone"
-                        class="md-primary">
-          </md-checkbox>
-          <input ref="taskTitle"
-                type="text"
-                @blur="addNewToDoTask"
-                v-model="newTaskTitle">
-        </div>
-        <draggable element='div' class="list-group"
-                    v-model="toDoList"
-                    :options="options">
-          <to-do-task class="list-group-item"  v-for="(task, index) in toDoList"
-                    :key="task.id"
-                    :task="task"
-                    :index="index"
-        />
-        </draggable>
+        <div class="image"></div>
       </div>
-      <div class="list">
-        <div class="listHeader">
-            <h4 class="col">Done</h4>
-            <div @click="deleteAllDoneTasks">
+      <div id="lists">
+        <div class="list">
+          <div class="listHeader">
+            <h4 class="col">To do</h4>
+            <div @click="onAddButtonClicked">
               <i class="material-icons icon">
-                delete_sweep
+                add_box
               </i>
             </div>
-        </div>
-        <hr>
-        <draggable element='div' class="list-group" v-model="doneList"
-          :options="options">
-            <done-task class="list-group-item" v-for="(task, index) in doneList"
-                    :key="task.id" :task="task" :index="index"
+          </div>
+          <hr>
+          <div v-if="addingNewTask" id="newTask">
+            <md-checkbox v-model="isDone"
+                          class="md-primary">
+            </md-checkbox>
+            <input ref="taskTitle"
+                  type="text"
+                  @blur="addNewToDoTask"
+                  v-model="newTaskTitle">
+          </div>
+          <draggable element='div' class="list-group"
+                      v-model="toDoList"
+                      :options="options">
+            <to-do-task class="list-group-item"  v-for="(task, index) in toDoList"
+                      :key="task.id"
+                      :task="task"
+                      :index="index"
           />
-        </draggable>
+          </draggable>
+        </div>
+        <div class="list">
+          <div class="listHeader">
+              <h4 class="col">Done</h4>
+              <div @click="deleteAllDoneTasks">
+                <i class="material-icons icon">
+                  delete_sweep
+                </i>
+              </div>
+          </div>
+          <hr>
+          <draggable element='div' class="list-group" v-model="doneList"
+            :options="options">
+              <done-task class="list-group-item" v-for="(task, index) in doneList"
+                      :key="task.id" :task="task" :index="index"
+            />
+          </draggable>
+        </div>
       </div>
+    </div>
   </div>
-</div>
-
 </template>
 
 <script>
@@ -84,6 +99,7 @@ export default {
       addingNewTask: false,
       isDragging: false,
       delayedDragging: false,
+      displaySidebar: false,
       options: {
         animation: 200,
         group: 'list',
@@ -92,6 +108,16 @@ export default {
     };
   },
   methods: {
+    fun() {
+      this.displaySidebar = true;
+      this.$nextTick(() => {
+        this.$refs.sidebar.focus();
+      });
+    },
+    logout() {
+      this.$store.dispatch('logout');
+      this.$router.push('/');
+    },
     onAddButtonClicked() {
       this.addingNewTask = true;
       this.$nextTick(() => {
@@ -149,6 +175,54 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+.darker {
+  background-color: rgb(133, 133, 133);
+  opacity: 0.3;
+}
+.sidebarUserInfo {
+  padding: 30px;
+  text-align: left;
+  img {
+    width: 50px;
+    height: 50px;
+    border-radius: 100%;
+  }
+  h4 {
+    position: relative;
+    float:right;
+    right: 290px;
+  }
+}
+.logoutText {
+  // position: relative;
+  // bottom: 20px;
+  display: inline;
+  position: relative;
+  bottom: 8px;
+  left: 10px;
+}
+.sidebar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 90%;
+  background-color: #ffffff;
+  z-index: 10;
+  transition: width 4s;
+}
+.sidebarLogout {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 70px;
+  padding: 25px;
+  border-top: 2px solid #f1f1f1;
+  cursor: pointer;
+}
+.active {
+  width: 90%;
+}
   .list-group {
     min-height: 50px;
   }
