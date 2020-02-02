@@ -17,6 +17,7 @@
             remove_red_eye
           </i>
         </div>
+        <span v-if="loginError">Please enter valid username and password!</span>
           <div id="inputBox" class="formItem">
             <div class="col" id="first">
               <md-checkbox v-model="rememberMe"
@@ -51,14 +52,18 @@ export default {
       password: '',
       rememberMe: false,
       showPassword: false,
+      loginError: false,
     };
   },
   methods: {
     Login() {
       const user = authentication.login(this.email, this.password, this.rememberMe);
       if (user !== null) {
+        this.loginError = false;
         this.$store.dispatch('login', user);
         this.$router.push('/lists');
+      } else {
+        this.loginError = true;
       }
     },
   },
@@ -66,6 +71,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+span {
+  position: relative;
+  top: 5px;
+  color: #ff0000;
+}
 #first {
   text-align: left;
   padding-left: 10px;
