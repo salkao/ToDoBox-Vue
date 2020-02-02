@@ -42,6 +42,7 @@
             <input ref="taskTitle"
                   type="text"
                   @blur="addNewToDoTask"
+                  @keydown.enter="addNewToDoTask"
                   v-model="newTaskTitle">
           </div>
           <draggable element='div' class="list-group"

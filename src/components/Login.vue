@@ -4,13 +4,18 @@
         <div>
           <img src="../assets/LoginImage.png" alt="">
         </div>
-        <input v-model="email" type="text" placeholder="Email" class="formItem textInput">
+        <input v-model="email"
+                type="text"
+                placeholder="Email"
+                class="formItem textInput"
+                @keydown.enter="Login">
         <div class="passInput">
           <input v-model="password"
                   :type="showPassword ? 'text' : 'password'"
                   placeholder="Password"
                   class="formItem textInput"
-                  id="passInput">
+                  id="passInput"
+                  @keydown.enter="Login">
           <i @click="showPassword = !showPassword"
               :class="showPassword ? 'material-icons icon iconActive' : 'material-icons icon'"
               class="material-icons icon">
@@ -33,7 +38,9 @@
           </div>
           <button class="formItem"
                   id="loginButton"
-                  @click="Login()">Login</button>
+                  @click="Login()">
+                  Login
+          </button>
     </div>
   </div>
 </template>
