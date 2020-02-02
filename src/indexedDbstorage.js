@@ -11,7 +11,7 @@ export default {
     db.tasks.add(task);
   },
   updateTask(id, title) {
-    db.tasks.update(id, { title: title }); // eslint-disable-line
+    db.tasks.update(id, { title });
   },
   deleteTask(id) {
     db.tasks.delete(id);
