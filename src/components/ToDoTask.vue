@@ -118,68 +118,68 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.mainActive {
-  background-color: #F1F1F1 !important;
-  input {
-    background-color: #F1F1F1;
+  .mainActive {
+    background-color: #F1F1F1 !important;
+    input {
+      background-color: #F1F1F1;
+    }
   }
-}
-.row {
-  display: flex;
-  .col {
-    flex: 1 0 auto;
+  .row {
+    display: flex;
+    .col {
+      flex: 1 0 auto;
+    }
   }
-}
-.material-icons {
-  cursor: pointer;
-}
-#main {
-  min-height: 32px;
-  border-radius: 4px;
-  background-color: #ffffff;
-  padding: 1px 5px;
-  width: 95%;
-  margin: 10px auto;
-}
-.md-primary {
-  margin: 0;
-  position: relative;
-  top: 5px;
-}
-.todoText {
-  border: none;
-  outline: none;
-  color: #2c3e50;
-  font-family: Roboto;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 17px;
-  text-align: left;
-  margin-left: 10px;
-  width: 80%;
-}
-img {
-  height: 160px;
-  width: 100%;
-  border-radius: 8px 8px 0 0;
-}
-.menuItemText {
-  position: relative;
-  right: 140px;
-}
-.item {
-  width: 240px;
-  height: 48px;
-  &:hover {
-    background-color: #F1F1F1;
+  .material-icons {
+    cursor: pointer;
   }
-}
-.optionsBtnActive {
-  display: block;
-  margin-top: 4px;
-  font-size: 22px;
-}
-.noDisplay {
-  display: none;
-}
+  #main {
+    min-height: 32px;
+    border-radius: 4px;
+    background-color: #ffffff;
+    padding: 1px 5px;
+    width: 95%;
+    margin: 10px auto;
+  }
+  .md-primary {
+    margin: 0;
+    position: relative;
+    top: 5px;
+  }
+  .todoText {
+    border: none;
+    outline: none;
+    color: #2c3e50;
+    font-family: Roboto;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 17px;
+    text-align: left;
+    margin-left: 10px;
+    width: 80%;
+  }
+  img {
+    height: 160px;
+    width: 100%;
+    border-radius: 8px 8px 0 0;
+  }
+  .menuItemText {
+    position: relative;
+    right: 140px;
+  }
+  .item {
+    width: 240px;
+    height: 48px;
+    &:hover {
+      background-color: #F1F1F1;
+    }
+  }
+  .optionsBtnActive {
+    display: block;
+    margin-top: 4px;
+    font-size: 22px;
+  }
+  .noDisplay {
+    display: none;
+  }
 </style>
