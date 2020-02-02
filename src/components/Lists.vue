@@ -175,54 +175,49 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.darker {
-  background-color: rgb(133, 133, 133);
-  opacity: 0.3;
-}
-.sidebarUserInfo {
-  padding: 30px;
-  text-align: left;
-  img {
-    width: 50px;
-    height: 50px;
-    border-radius: 100%;
+  .darker {
+    background-color: rgb(133, 133, 133);
+    opacity: 0.3;
   }
-  h4 {
+  .sidebarUserInfo {
+    padding: 30px;
+    text-align: left;
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 100%;
+    }
+    h4 {
+      position: relative;
+      bottom: 50px;
+      left: 80px;
+    }
+  }
+  .logoutText {
+    display: inline;
     position: relative;
-    float:right;
-    right: 290px;
+    bottom: 8px;
+    left: 10px;
   }
-}
-.logoutText {
-  // position: relative;
-  // bottom: 20px;
-  display: inline;
-  position: relative;
-  bottom: 8px;
-  left: 10px;
-}
-.sidebar {
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 100%;
-  width: 90%;
-  background-color: #ffffff;
-  z-index: 10;
-  transition: width 4s;
-}
-.sidebarLogout {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 70px;
-  padding: 25px;
-  border-top: 2px solid #f1f1f1;
-  cursor: pointer;
-}
-.active {
-  width: 90%;
-}
+  .sidebar {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 90%;
+    background-color: #ffffff;
+    z-index: 10;
+    transition: width 4s;
+  }
+  .sidebarLogout {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 70px;
+    padding: 25px;
+    border-top: 2px solid #f1f1f1;
+    cursor: pointer;
+  }
   .list-group {
     min-height: 50px;
   }
