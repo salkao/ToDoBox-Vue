@@ -6,9 +6,9 @@ Once when task is completed it can be moved to done list, completed task can als
 
 ## Demo
 https://todobox.netlify.com/
-#### Demo login data
-Email: todobox@test.com  
-Password: todoboxtest
+### Demo login data
+#### Email: todobox@test.com  
+#### Password: todoboxtest
 
 ## Features
 Application has functionality to add task with title and image in todo list. All task in todo list are editable and
